@@ -49,7 +49,6 @@ const iconMap = {
 function Skills() {
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
-
   const skills = {
     langages: [
       { name: "Python", icon: "python" },
@@ -101,24 +100,20 @@ function Skills() {
           <p className="text-xl text-center mb-12 text-muted-foreground">
             Technologies et outils pour des solutions web et IoT innovantes
           </p>
-
           <Tabs defaultValue="langages" className="w-full">
-            <TabsList className="grid w-full grid-cols-4 mb-8">
+            <TabsList className="grid w-full grid-cols-4 gap-1 sm:gap-2 mb-8 overflow-x-auto pb-2">
               {Object.keys(skills).map((category) => (
-                <TabsTrigger key={category} value={category}>
+                <TabsTrigger key={category} value={category} className="min-w-0 text-xs sm:text-sm truncate">
                   {categoryLabels[category as keyof typeof categoryLabels]}
                 </TabsTrigger>
               ))}
             </TabsList>
-
             {Object.entries(skills).map(([category, categorySkills]) => (
               <TabsContent key={category} value={category}>
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-4 sm:gap-2">
                   {categorySkills.map((skill, index) => {
                     const Icon = iconMap[skill.icon as keyof typeof iconMap];
-
                     if (!Icon) return null;
-
                     return (
                       <motion.div
                         key={skill.name}
@@ -144,10 +139,10 @@ function Skills() {
                             `,
                           }}
                         />
-                        <Card className="relative overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-primary/5 hover:-translate-y-1">
-                          <CardContent className="p-6">
+                        <Card className="relative overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-primary/5 hover:-translate-y-1 w-full sm:w-auto">
+                          <CardContent className="p-4 sm:p-6">
                             <div className="flex items-center gap-2">
-                              <Icon className="w-6 h-6 text-primary" />
+                              <Icon className="w-6 h-6 text-primary flex-shrink-0" />
                               <h3 className="font-medium">{skill.name}</h3>
                             </div>
                           </CardContent>
