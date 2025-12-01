@@ -38,7 +38,7 @@ const About = () => {
           <div className="fade-in">
             <div className="space-y-6">
               <p className="text-lg text-text-secondary leading-relaxed">
-                Étudiant à l’Université Nationale des Sciences, Techniques, Ingénierie et Mathématiques (UNSTIM), je suis un développeur fullstack spécialisé en data science, intelligence artificielle, IoT, systèmes embarqués, cloud et big data. Je conçois des solutions connectées et des applications web performantes, transformant des idées complexes en projets à fort impact.
+                Étudiant à l’Université Nationale des Sciences, Techniques, Ingénierie et Mathématiques (UNSTIM), je suis un développeur fullstack spécialisé en data science, intelligence artificielle, IoT et systèmes embarqués. Je conçois des solutions connectées et des applications web performantes, transformant des idées complexes en projets à fort impact.
               </p>
               <p className="text-lg text-text-secondary leading-relaxed">
                 Animé par une curiosité insatiable, j’explore les technologies de pointe pour créer des solutions innovantes et durables, tout en poursuivant mon apprentissage pour relever les défis technologiques de demain.

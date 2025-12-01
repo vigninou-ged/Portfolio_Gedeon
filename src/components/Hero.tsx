@@ -14,9 +14,8 @@ const Hero = () => {
       <div className="container mx-auto px-4 text-center relative z-10">
         <div className="fade-in animate">
           <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-            <span className="block">Salut, je suis</span>
             <span className="bg-gradient-primary bg-clip-text text-transparent">
-              Vigninou Gédéon Akponon
+              Vigninou Gédéon AKPONON
             </span>
           </h1>
           <h2 className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto">

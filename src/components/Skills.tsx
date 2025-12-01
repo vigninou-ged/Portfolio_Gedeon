@@ -1,114 +1,168 @@
-import { useState, useEffect } from 'react';
+"use client";
+import { Card, CardContent } from "@/components/ui/card";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { motion, useMotionTemplate, useMotionValue } from "framer-motion";
+import {
+  SiAmazonwebservices,
+  SiBootstrap,
+  SiCss3,
+  SiDjango,
+  SiGit,
+  SiHeroku,
+  SiHtml5,
+  SiMysql,
+  SiPostgresql,
+  SiPython,
+  SiTensorflow,
+  SiPytorch,
+  SiNumpy,
+  SiPandas,
+  SiOpencv,
+  SiScikitlearn,
+  SiShell,
+} from "react-icons/si";
+import { BiLineChart } from "react-icons/bi"; // Alternative pour Matplotlib
 
-const Skills = () => {
-  const [isVisible, setIsVisible] = useState(false);
+const iconMap = {
+  python: SiPython,
+  html: SiHtml5,
+  css: SiCss3,
+  mysql: SiMysql,
+  postgresql: SiPostgresql,
+  shell: SiShell,
+  numpy: SiNumpy,
+  pandas: SiPandas,
+  opencv: SiOpencv,
+  "scikit-learn": SiScikitlearn,
+  matplotlib: BiLineChart, // Graphique au lieu de Matplotlib inexistant
+  django: SiDjango,
+  flask: SiDjango,
+  bootstrap: SiBootstrap,
+  keras: SiTensorflow,
+  tensorflow: SiTensorflow,
+  pytorch: SiPytorch,
+  git: SiGit,
+  aws: SiAmazonwebservices,
+  heroku: SiHeroku,
+};
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.3 }
-    );
+function Skills() {
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
 
-    const element = document.getElementById('skills');
-    if (element) {
-      observer.observe(element);
-    }
+  const skills = {
+    langages: [
+      { name: "Python", icon: "python" },
+      { name: "HTML5", icon: "html" },
+      { name: "CSS3", icon: "css" },
+      { name: "MySQL", icon: "mysql" },
+      { name: "PostgreSQL", icon: "postgresql" },
+      { name: "Script Shell", icon: "shell" },
+    ],
+    bibliotheques: [
+      { name: "NumPy", icon: "numpy" },
+      { name: "Pandas", icon: "pandas" },
+      { name: "OpenCV", icon: "opencv" },
+      { name: "Scikit-learn", icon: "scikit-learn" },
+      { name: "Matplotlib", icon: "matplotlib" },
+    ],
+    frameworks: [
+      { name: "Django", icon: "django" },
+      { name: "Flask", icon: "flask" },
+      { name: "Bootstrap", icon: "bootstrap" },
+      { name: "Keras", icon: "keras" },
+      { name: "TensorFlow", icon: "tensorflow" },
+      { name: "PyTorch", icon: "pytorch" },
+    ],
+    outils: [
+      { name: "Git", icon: "git" },
+      { name: "AWS", icon: "aws" },
+      { name: "Heroku", icon: "heroku" },
+    ],
+  };
 
-    return () => {
-      if (element) {
-        observer.unobserve(element);
-      }
-    };
-  }, []);
-
-  const skillCategories = [
-    {
-      category: 'Langages & Bases de Données',
-      skills: [
-        { name: 'Python', level: 90 },
-        { name: 'HTML5', level: 85 },
-        { name: 'CSS3', level: 85 },
-        { name: 'MySQL', level: 80 },
-        { name: 'PostgreSQL', level: 80 },
-        { name: 'Script Shell', level: 75 }
-      ]
-    },
-    {
-      category: 'Bibliothèques',
-      skills: [
-        { name: 'NumPy', level: 85 },
-        { name: 'Pandas', level: 85 },
-        { name: 'OpenCV', level: 80 },
-        { name: 'scikit-learn', level: 80 },
-        { name: 'matplotlib', level: 75 }
-      ]
-    },
-    {
-      category: 'Frameworks',
-      skills: [
-        { name: 'Django', level: 85 },
-        { name: 'Flask', level: 85 },
-        { name: 'Bootstrap', level: 80 },
-        { name: 'Keras', level: 80 },
-        { name: 'TensorFlow', level: 80 },
-        { name: 'PyTorch', level: 75 }
-      ]
-    },
-    {
-      category: 'Autres Outils',
-      skills: [
-        { name: 'Git', level: 90 },
-        { name: 'AWS', level: 80 },
-        { name: 'Heroku', level: 75 }
-      ]
-    }
-  ];
+  const categoryLabels = {
+    langages: "Langages & Bases de Données",
+    bibliotheques: "Bibliothèques",
+    frameworks: "Frameworks",
+    outils: "Autres Outils",
+  };
 
   return (
-    <section id="skills" className="section-padding">
-      <div className="container mx-auto px-4">
-        <div className="section-header fade-in">
-          <h2 className="section-title">Compétences</h2>
-          <p className="section-description">
+    <section id="skills" className="py-20 px-4">
+      <div className="container mx-auto max-w-6xl">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+        >
+          <h2 className="text-3xl font-bold mb-4 text-center">Compétences</h2>
+          <p className="text-xl text-center mb-12 text-muted-foreground">
             Technologies et outils pour des solutions web et IoT innovantes
           </p>
-        </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
-          {skillCategories.map((category, categoryIndex) => (
-            <div key={categoryIndex} className="slide-up">
-              <h3 className="text-xl font-semibold mb-6 text-primary">
-                {category.category}
-              </h3>
-              <div className="space-y-6">
-                {category.skills.map((skill, skillIndex) => (
-                  <div key={skillIndex} className="skill-item">
-                    <div className="flex justify-between items-center mb-2">
-                      <span className="text-foreground font-medium">{skill.name}</span>
-                      <span className="text-muted-foreground text-sm">{skill.level}%</span>
-                    </div>
-                    <div className="skill-bar">
-                      <div 
-                        className="skill-progress"
-                        style={{
-                          width: isVisible ? `${skill.level}%` : '0%',
-                          transitionDelay: `${skillIndex * 100}ms`
+          <Tabs defaultValue="langages" className="w-full">
+            <TabsList className="grid w-full grid-cols-4 mb-8">
+              {Object.keys(skills).map((category) => (
+                <TabsTrigger key={category} value={category}>
+                  {categoryLabels[category as keyof typeof categoryLabels]}
+                </TabsTrigger>
+              ))}
+            </TabsList>
+
+            {Object.entries(skills).map(([category, categorySkills]) => (
+              <TabsContent key={category} value={category}>
+                <div className="flex flex-wrap gap-2">
+                  {categorySkills.map((skill, index) => {
+                    const Icon = iconMap[skill.icon as keyof typeof iconMap];
+
+                    if (!Icon) return null;
+
+                    return (
+                      <motion.div
+                        key={skill.name}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.3, delay: index * 0.1 }}
+                        className="group relative"
+                        onMouseMove={(e) => {
+                          const bounds = e.currentTarget.getBoundingClientRect();
+                          mouseX.set(e.clientX - bounds.left);
+                          mouseY.set(e.clientY - bounds.top);
                         }}
-                      />
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
+                      >
+                        <motion.div
+                          className="pointer-events-none absolute -inset-px rounded-lg opacity-0 transition duration-300 group-hover:opacity-100"
+                          style={{
+                            background: useMotionTemplate`
+                              radial-gradient(
+                                500px circle at ${mouseX}px ${mouseY}px,
+                                rgba(var(--primary-rgb), 0.15),
+                                transparent 80%
+                              )
+                            `,
+                          }}
+                        />
+                        <Card className="relative overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-primary/5 hover:-translate-y-1">
+                          <CardContent className="p-6">
+                            <div className="flex items-center gap-2">
+                              <Icon className="w-6 h-6 text-primary" />
+                              <h3 className="font-medium">{skill.name}</h3>
+                            </div>
+                          </CardContent>
+                        </Card>
+                      </motion.div>
+                    );
+                  })}
+                </div>
+              </TabsContent>
+            ))}
+          </Tabs>
+        </motion.div>
       </div>
     </section>
   );
-};
+}
 
 export default Skills;

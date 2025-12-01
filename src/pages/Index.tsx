@@ -22,7 +22,7 @@ const Index = () => {
       </main>
       <footer className="bg-muted/30 border-t border-border/50 py-8">
         <div className="container mx-auto px-4 text-center text-muted-foreground">
-          <p>&copy; 2024 Portfolio Data Science. Tous droits réservés.</p>
+          <p>&copy; 2026  Vigninou Gédéon AKPONON. Tous droits réservés.</p>
         </div>
       </footer>
     </div>
