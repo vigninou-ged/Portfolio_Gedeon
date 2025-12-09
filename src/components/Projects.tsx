@@ -12,7 +12,7 @@ const Projects = () => {
       image: aiDashboardImage,
       tags: ['Python', 'TensorFlow', 'React', 'FastAPI', 'PostgreSQL'],
       githubUrl: 'https://github.com/vigninou-ged/AI-Analytics-Dashboard.git',
-      liveUrl: 'https://demo.com',
+      liveUrl: 'https://aianalytics.netlify.app',
       featured: true
     },
     {
