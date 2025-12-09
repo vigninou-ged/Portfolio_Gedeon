@@ -11,7 +11,7 @@ const Projects = () => {
       description: 'Plateforme complète d\'analyse de données avec ML intégré. Interface intuitive pour visualiser et interpréter des modèles complexes de machine learning en temps réel.',
       image: aiDashboardImage,
       tags: ['Python', 'TensorFlow', 'React', 'FastAPI', 'PostgreSQL'],
-      githubUrl: 'https://github.com',
+      githubUrl: 'https://github.com/vigninou-ged/AI-Analytics-Dashboard.git',
       liveUrl: 'https://demo.com',
       featured: true
     },
