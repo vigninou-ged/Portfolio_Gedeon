@@ -85,5 +85,21 @@
     <div id="root"></div>
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script type="module" src="/src/main.tsx"></script>
+    import { Helmet } from 'react-helmet-async';
+
+<Helmet>
+  <script type="application/ld+json">
+    {JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Dataset",
+      "name": dataset.name,
+      "description": dataset.description,
+      "url": window.location.href,
+      "creator": { "@type": "Person", "name": "Vigninou Gédéon Akponon" },
+      "datePublished": dataset.date
+    })}
+  </script>
+</Helmet>
+
   </body>
 </html>
